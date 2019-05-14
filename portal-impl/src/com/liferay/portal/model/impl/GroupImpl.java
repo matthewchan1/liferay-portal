@@ -1050,8 +1050,17 @@ public class GroupImpl extends GroupBaseImpl {
 					continue;
 				}
 
-				if (portletDataHandler.equals(
-						stagedPortlet.getPortletDataHandlerInstance())) {
+				PortletDataHandler stagedPortletDataHandler =
+					stagedPortlet.getPortletDataHandlerInstance();
+
+				String portletDataHandlerServiceName =
+					portletDataHandler.getServiceName();
+
+				String stagedDataHandlerServiceName =
+					stagedPortletDataHandler.getServiceName();
+
+				if (portletDataHandlerServiceName.equals(
+						stagedDataHandlerServiceName)) {
 
 					return GetterUtil.getBoolean(entry.getValue());
 				}
