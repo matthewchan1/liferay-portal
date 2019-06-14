@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.search.facet.collector.FacetCollector;
 import com.liferay.portal.kernel.search.facet.collector.TermCollector;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.StringUtil;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.search.web.internal.facet.display.context.UserSearchFacetDisplayContext;
 import com.liferay.portal.search.web.internal.facet.display.context.UserSearchFacetTermDisplayContext;
 
@@ -97,6 +98,8 @@ public class UserSearchFacetDisplayBuilder {
 
 		String term = GetterUtil.getString(termCollector.getTerm());
 
+		String userName = Validator.isNotNull(term) ? term : "Guest";
+
 		UserSearchFacetTermDisplayContext userSearchFacetTermDisplayContext =
 			new UserSearchFacetTermDisplayContext();
 
@@ -105,7 +108,7 @@ public class UserSearchFacetDisplayBuilder {
 		userSearchFacetTermDisplayContext.setFrequencyVisible(
 			_frequenciesVisible);
 		userSearchFacetTermDisplayContext.setSelected(isSelected(term));
-		userSearchFacetTermDisplayContext.setUserName(term);
+		userSearchFacetTermDisplayContext.setUserName(userName);
 
 		return userSearchFacetTermDisplayContext;
 	}
