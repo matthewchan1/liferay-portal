@@ -816,13 +816,13 @@ AUI.add(
 									}
 								}
 							}
-						} else if (
-							attributeName === 'required'
-						) {
-							var state = (changed.value.newVal === 'true');
-							var requiredNode = editingField._getFieldNode().one('.glyphicon-asterisk');
+						} else if (attributeName === 'required') {
+							var state = changed.value.newVal === 'true';
+							var requiredNode = editingField
+								._getFieldNode()
+								.one('.glyphicon-asterisk');
 
-							if(requiredNode) {
+							if (requiredNode) {
 								requiredNode.toggle(state);
 							}
 						}
