@@ -511,6 +511,10 @@ AUI.add(
 				},
 
 				_beforeGetEditor: function(record, column) {
+					if (column.key === 'name') {
+						return;
+					}
+
 					var instance = this;
 
 					var columnEditor = column.editor;
