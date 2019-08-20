@@ -683,6 +683,20 @@ AUI.add(
 					parser.parseContent(content);
 				},
 
+				populateRepeatedSiblings: function(locale) {
+					var instance = this;
+
+					var siblings = instance.getRepeatedSiblings();
+
+					siblings.forEach(function(item) {
+						var localizationMap = item.get('localizationMap');
+
+						if (Lang.isUndefined(localizationMap[locale])) {
+							localizationMap[locale] = '';
+						}
+					});
+				},
+
 				remove: function() {
 					var instance = this;
 
@@ -935,6 +949,8 @@ AUI.add(
 							value !== localizationMap[defaultLocale]
 						) {
 							localizationMap[locale] = value;
+
+							instance.populateRepeatedSiblings(locale);
 						}
 					} else {
 						localizationMap = value;
