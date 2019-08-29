@@ -383,13 +383,13 @@ AUI.add(
 						arguments
 					);
 
-					if (field.name === 'ddm-image' && field.get('required')) {
+					if (field.name === 'ddm-image' && !field.get('required')) {
 						var requiredNode = field
 							._getFieldNode()
-							.one('.glyphicon-asterisk');
+							.one('.lexicon-icon-asterisk');
 
 						if (requiredNode) {
-							requiredNode.toggle(true);
+							requiredNode.toggle(false);
 						}
 					}
 
@@ -852,7 +852,7 @@ AUI.add(
 							var state = changed.value.newVal === 'true';
 							var requiredNode = editingField
 								._getFieldNode()
-								.one('.glyphicon-asterisk');
+								.one('.lexicon-icon-asterisk');
 
 							if (requiredNode) {
 								requiredNode.toggle(state);

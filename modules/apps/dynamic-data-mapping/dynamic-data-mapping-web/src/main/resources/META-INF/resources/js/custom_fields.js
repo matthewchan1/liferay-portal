@@ -132,7 +132,7 @@ AUI.add(
 			'<label class="control-label">' +
 			A.Escape.html(Liferay.Language.get('image-description')) +
 			'</label>' +
-			'<span class="glyphicon glyphicon-asterisk hide" style="display: none;" hidden="hidden"></span>' +
+			Liferay.Util.getLexiconIconTpl('asterisk') +
 			'<input class="field form-control" type="text" value="" disabled>' +
 			'</div>';
 
