@@ -348,19 +348,9 @@ public class SetupWizardUtil {
 			httpServletRequest, "adminLastName",
 			PropsValues.DEFAULT_ADMIN_LAST_NAME);
 
-		boolean passwordReset = false;
-
-		PasswordPolicy passwordPolicy =
-			PasswordPolicyLocalServiceUtil.getDefaultPasswordPolicy(
-				company.getCompanyId());
-
-		if ((passwordPolicy != null) && passwordPolicy.isChangeable()) {
-			passwordReset = true;
-		}
-
 		User user = SetupWizardSampleDataUtil.updateAdminUser(
 			company, themeDisplay.getLocale(), themeDisplay.getLanguageId(),
-			emailAddress, firstName, lastName, passwordReset);
+			emailAddress, firstName, lastName, false);
 
 		PropsValues.ADMIN_EMAIL_FROM_NAME = user.getFullName();
 
